@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Google Chrome 程序名.
+GOOGLE_CHROME=google-chrome
+
 # 設置了 GNOME 主題的文件
 CONFIG_FILE=$HOME/.config/gtk-3.0/settings.ini
 
@@ -19,8 +22,8 @@ while read LINE; do
 done <$CONFIG_FILE
 
 # 根據主題名稱啓動 Google Chrome.
-if [[ $GTK_THEME_NAME =~ .*dark.* ]]; then # 若主題名稱包含 `dark`
-  google-chrome --force-dark-mode $*
+if [[ $GTK_COLOR_SCHEME =~ .*dark.* ]]; then # 若主題名稱包含 `dark`
+  "$GOOGLE_CHROME" --force-dark-mode "$@"
 else
-  google-chrome $*
+  "$GOOGLE_CHROME" "$@"
 fi
